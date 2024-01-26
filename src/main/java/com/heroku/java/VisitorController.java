@@ -20,15 +20,27 @@ public class VisitorController {
     private final DataSource dataSource;
     private VisitorService visitorService;
 
-    @GetMapping
-    ResponseEntity<List<Visitor>> database() {
+    @GetMapping("/database")
+    String database() {
         try (Connection connection = dataSource.getConnection()) {
-            return new ResponseEntity<List<Visitor>>(visitorService.allVisitors(), HttpStatus.OK);
-
+//            final var statement = connection.createStatement();
+//            statement.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
+//            statement.executeUpdate("INSERT INTO ticks VALUES (now())");
+//            final var resultSet = statement.executeQuery("SELECT visitor FROM visitors");
+//            final var output = new ArrayList<Visitor>();
+//            while (resultSet.next()) {
+//                // Assuming Visitor has a constructor that takes a timestamp as an argument
+//                output.add(new Visitor(resultSet.id, resultSet.visitor_name, ));
+//            }
+//            // Use ResponseEntity.ok() to create a BodyBuilder with status code 200
+//            // Use BodyBuilder.body() to set the body of the response with the output list
+//            return ResponseEntity.ok().body(output);
+            return "Connected";
         } catch (Throwable t) {
-            return new ResponseEntity<List<Visitor>>(visitorService.allVisitors(), HttpStatus.OK);
+            // Use ResponseEntity.status() to create a BodyBuilder with status code 500 (Internal Server Error)
+            // Use BodyBuilder.body() to set the body of the response with the error message
+            return "Not Connected";
         }
-//        return new ResponseEntity<List<Visitor>>(visitorService.allVisitors(),HttpStatus.OK);
     }
 
     @GetMapping("1")
