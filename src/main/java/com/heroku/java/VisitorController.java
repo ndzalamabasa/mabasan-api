@@ -12,14 +12,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/visitors")
+@RequiredArgsConstructor
 public class VisitorController {
 
     private final VisitorService visitorService;
-
-    @Autowired
-    public VisitorController(VisitorService visitorService) {
-        this.visitorService = visitorService;
-    }
 
     @GetMapping()
     public ResponseEntity<List<Visitor>> getAllVisitors(){

@@ -7,17 +7,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class VisitorService {
 
     private final VisitorRepository visitorRepo;
-
-    @Autowired
-    public VisitorService(VisitorRepository visitorRepo) {
-        this.visitorRepo = visitorRepo;
-    }
 
     public List<Visitor> allVisitors(){
         return (List<Visitor>) visitorRepo.findAll();
     }
 }
+
 
