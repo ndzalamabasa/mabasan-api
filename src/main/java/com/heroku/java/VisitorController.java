@@ -17,7 +17,7 @@ public class VisitorController {
 
     private VisitorService visitorService;
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<Visitor>> getAllVisitors(){
         return new ResponseEntity<List<Visitor>>(visitorService.allVisitors(),HttpStatus.OK);
     }
