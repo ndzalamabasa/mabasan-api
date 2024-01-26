@@ -10,7 +10,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class VisitorService {
 
-    private final VisitorRepository visitorRepo;
+    private VisitorRepository visitorRepo;
 
     public List<Visitor> allVisitors(){
         return (List<Visitor>) visitorRepo.findAll();

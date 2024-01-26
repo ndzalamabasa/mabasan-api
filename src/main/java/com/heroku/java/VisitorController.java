@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class VisitorController {
 
-    private final VisitorService visitorService;
+    private VisitorService visitorService;
 
     @GetMapping()
     public ResponseEntity<List<Visitor>> getAllVisitors(){
