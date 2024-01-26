@@ -20,27 +20,25 @@ public class VisitorController {
     private final DataSource dataSource;
     private VisitorService visitorService;
 
-    @GetMapping("/database")
-    String database() {
+    @GetMapping
+    public ResponseEntity<List<Visitor>> database() {
         try (Connection connection = dataSource.getConnection()) {
 //            final var statement = connection.createStatement();
-//            statement.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
-//            statement.executeUpdate("INSERT INTO ticks VALUES (now())");
-//            final var resultSet = statement.executeQuery("SELECT visitor FROM visitors");
-//            final var output = new ArrayList<Visitor>();
+//
+//            final var resultSet = statement.executeQuery("SELECT * FROM visitors");
+//            final var output = new ArrayList<>();
 //            while (resultSet.next()) {
-//                // Assuming Visitor has a constructor that takes a timestamp as an argument
-//                output.add(new Visitor(resultSet.id, resultSet.visitor_name, ));
+//                output.add(resultSet);
 //            }
-//            // Use ResponseEntity.ok() to create a BodyBuilder with status code 200
-//            // Use BodyBuilder.body() to set the body of the response with the output list
-//            return ResponseEntity.ok().body(output);
-            return "Connected";
+//
+//            model.put("records", output);
+            return new ResponseEntity<List<Visitor>>(visitorService.allVisitors(), HttpStatus.OK);
+
         } catch (Throwable t) {
-            // Use ResponseEntity.status() to create a BodyBuilder with status code 500 (Internal Server Error)
-            // Use BodyBuilder.body() to set the body of the response with the error message
-            return "Not Connected";
+//            model.put("message", t.getMessage());
+            return new ResponseEntity<List<Visitor>>(visitorService.allVisitors(), HttpStatus.BAD_REQUEST);
         }
+//        return new ResponseEntity<List<Visitor>>(visitorService.allVisitors(),HttpStatus.OK);
     }
 
     @GetMapping("1")
