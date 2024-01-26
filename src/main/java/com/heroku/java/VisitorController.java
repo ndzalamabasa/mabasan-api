@@ -21,17 +21,22 @@ public class VisitorController {
     private VisitorService visitorService;
 
     @GetMapping
-    ResponseEntity<List<Visitor>> database(Map<String, Object> model) {
+    String database(Map<String, Object> model) {
         try (Connection connection = dataSource.getConnection()) {
             final var statement = connection.createStatement();
 
             final var resultSet = statement.executeQuery("SELECT * FROM visitors");
+            final var output = new ArrayList<>();
+            while (resultSet.next()) {
+                output.add("Read from DB: " + resultSet.getTimestamp("tick"));
+            }
 
-            return new ResponseEntity<List<Visitor>> (visitorService.allVisitors(), HttpStatus.OK);
+            model.put("records", output);
+            return (String) output.get(0);
 
         } catch (Throwable t) {
             model.put("message", t.getMessage());
-            return new ResponseEntity<List<Visitor>> (visitorService.allVisitors(), HttpStatus.NOT_FOUND);
+            return "error";
         }
 //        return new ResponseEntity<List<Visitor>>(visitorService.allVisitors(),HttpStatus.OK);
     }
