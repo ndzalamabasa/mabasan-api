@@ -22,7 +22,7 @@ public class VisitorController {
 
     @GetMapping
     public ResponseEntity<List<Visitor>> database() {
-        try (Connection connection = dataSource.getConnection()) {
+//        try (Connection connection = dataSource.getConnection()) {
 //            final var statement = connection.createStatement();
 //
 //            final var resultSet = statement.executeQuery("SELECT * FROM visitors");
@@ -34,10 +34,10 @@ public class VisitorController {
 //            model.put("records", output);
             return new ResponseEntity<List<Visitor>>(visitorService.allVisitors(), HttpStatus.OK);
 
-        } catch (Throwable t) {
-//            model.put("message", t.getMessage());
-            return new ResponseEntity<List<Visitor>>(visitorService.allVisitors(), HttpStatus.BAD_REQUEST);
-        }
+//        } catch (Throwable t) {
+////            model.put("message", t.getMessage());
+//            return new ResponseEntity<List<Visitor>>(visitorService.allVisitors(), HttpStatus.BAD_REQUEST);
+//        }
 //        return new ResponseEntity<List<Visitor>>(visitorService.allVisitors(),HttpStatus.OK);
     }
 
