@@ -1,7 +1,6 @@
 package com.heroku.java;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +18,12 @@ public class VisitorController {
 
     @GetMapping
     public ResponseEntity<List<Visitor>> getAllVisitors(){
+        return new ResponseEntity<List<Visitor>>(visitorService.allVisitors(),HttpStatus.OK);
+    }
+
+    @GetMapping("1")
+    public ResponseEntity<List<Visitor>> getVisitors(){
+        System.out.println("There is nothing here!");
         return new ResponseEntity<List<Visitor>>(visitorService.allVisitors(),HttpStatus.OK);
     }
 }
