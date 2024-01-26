@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/visitors")
 @RequiredArgsConstructor
 public class VisitorController {
     @Autowired
     private final VisitorService visitorService;
 
-    @GetMapping("/visitors")
+    @GetMapping()
     public ResponseEntity<List<Visitor>> getAllVisitors(){
         return new ResponseEntity<List<Visitor>>(visitorService.allVisitors(),HttpStatus.OK);
     }
