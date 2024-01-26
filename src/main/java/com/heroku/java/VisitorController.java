@@ -21,24 +21,17 @@ public class VisitorController {
     private VisitorService visitorService;
 
     @GetMapping
-    String database(Map<String, Object> model) {
+    ResponseEntity<List<Visitor>> database(Map<String, Object> model) {
         try (Connection connection = dataSource.getConnection()) {
             final var statement = connection.createStatement();
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
-            statement.executeUpdate("INSERT INTO ticks VALUES (now())");
 
-            final var resultSet = statement.executeQuery("SELECT tick FROM ticks");
-            final var output = new ArrayList<>();
-            while (resultSet.next()) {
-                output.add("Read from DB: " + resultSet.getTimestamp("tick"));
-            }
+            final var resultSet = statement.executeQuery("SELECT * FROM visitors");
 
-            model.put("records", output);
-            return "database";
+            return new ResponseEntity<List<Visitor>> (visitorService.allVisitors(), HttpStatus.OK);
 
         } catch (Throwable t) {
             model.put("message", t.getMessage());
-            return "error";
+            return new ResponseEntity<List<Visitor>> (visitorService.allVisitors(), HttpStatus.NOT_FOUND);
         }
 //        return new ResponseEntity<List<Visitor>>(visitorService.allVisitors(),HttpStatus.OK);
     }
