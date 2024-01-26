@@ -12,6 +12,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class VisitorService {
 
+    @Autowired
     private final VisitorRepository visitorRepo;
 
     public List<Visitor> allVisitors(){
