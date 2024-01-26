@@ -3,6 +3,7 @@ package com.heroku.java;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -13,6 +14,7 @@ import java.util.Map;
 
 @SpringBootApplication
 @Controller
+@ComponentScan(basePackages = "com.heroku.java")
 public class GettingStartedApplication {
     private final DataSource dataSource;
 
