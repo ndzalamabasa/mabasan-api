@@ -1,27 +1,18 @@
 package com.heroku.java;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.UUID;
-
-
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "visitors")
-@Data
-@Entity
+@Setter
+@Getter
 public class Visitor {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private Integer visitorId;
     private String visitorName;
     private String visitorEmail;
 
+    public Visitor(Integer visitorId, String visitorName, String visitorEmail) {
+        this.visitorId = visitorId;
+        this.visitorName = visitorName;
+        this.visitorEmail = visitorEmail;
+    }
 }
