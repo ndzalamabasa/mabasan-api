@@ -15,7 +15,7 @@ import java.util.Objects;
 @Repository
 public class VisitorRepoImplementation implements VisitorRepository {
 
-    private static final String INSERT_VISITOR = "INSERT INTO visitors(visitor_id, visitor_name, visitor_email) VALUES (NEXTVAL(visitors_SEQ)), ?, ?)";
+    private static final String INSERT_VISITOR = "INSERT INTO visitors(visitor_name, visitor_email) VALUES ( ?, ?)";
     private static final String GET_VISITOR_BY_ID = "SELECT * FROM visitors WHERE visitor_id = ?";
 
     @Autowired
@@ -33,7 +33,7 @@ public class VisitorRepoImplementation implements VisitorRepository {
                 return ps;
             }, keyHolder);
 
-            return (Integer) Objects.requireNonNull(keyHolder.getKeys()).get("visitor_id");
+            return (Integer) keyHolder.getKeys().get("visitor_id");
         } catch(Exception e){
             throw new EtAuthException("Invalid details, failed to add a visitor");
         }
