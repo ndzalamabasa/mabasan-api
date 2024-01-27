@@ -1,4 +1,4 @@
-package com.heroku.java;
+package com.heroku.java.repositories;
 
 import com.heroku.java.exceptions.EtAuthException;
 

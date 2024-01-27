@@ -1,4 +1,4 @@
-package com.heroku.java;
+package com.heroku.java.entities;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,5 +1,7 @@
-package com.heroku.java;
+package com.heroku.java.services;
 
+import com.heroku.java.repositories.VisitorRepository;
+import com.heroku.java.entities.Visitor;
 import com.heroku.java.exceptions.EtAuthException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

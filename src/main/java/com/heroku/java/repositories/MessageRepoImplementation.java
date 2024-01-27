@@ -1,6 +1,7 @@
-package com.heroku.java;
+package com.heroku.java.repositories;
 
 import com.heroku.java.exceptions.EtAuthException;
+import com.heroku.java.repositories.MessageRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -11,7 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 
 @Repository
-public class MessageRepoImplementation implements MessageRepo{
+public class MessageRepoImplementation implements MessageRepo {
     private static final String INSERT_MESSAGE = "INSERT INTO messages(message) VALUES (?)";
 
     @Autowired

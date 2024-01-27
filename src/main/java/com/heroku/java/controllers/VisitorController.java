@@ -1,8 +1,10 @@
-package com.heroku.java;
+package com.heroku.java.controllers;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import com.heroku.java.services.VisitorService;
+import com.heroku.java.entities.Visitor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,5 +1,6 @@
-package com.heroku.java;
+package com.heroku.java.controllers;
 
+import com.heroku.java.services.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

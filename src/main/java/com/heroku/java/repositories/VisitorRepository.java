@@ -1,6 +1,7 @@
-package com.heroku.java;
+package com.heroku.java.repositories;
 
 
+import com.heroku.java.entities.Visitor;
 import com.heroku.java.exceptions.EtAuthException;
 
 public interface VisitorRepository {
