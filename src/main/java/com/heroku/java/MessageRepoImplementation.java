@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 
 public class MessageRepoImplementation implements MessageRepo{
-    private static final String INSERT_MESSAGE = "INSERT INTO messages(message) VALUES ( ?)";
+    private static final String INSERT_MESSAGE = "INSERT INTO messages(message) VALUES (?)";
 
     @Autowired
     JdbcTemplate jdbcTemplate;
