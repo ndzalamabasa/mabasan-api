@@ -1,16 +1,12 @@
 package com.heroku.java;
 
+import com.heroku.java.exceptions.EtAuthException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-@RequiredArgsConstructor
-public class VisitorService {
-    private VisitorRepository visitorRepo;
+public interface VisitorService {
 
-    public List<Visitor> allVisitors() {
-        return (List<Visitor>) visitorRepo.findAll();
-    }
+    Visitor addVisitor(String visitorName, String visitorEmail) throws EtAuthException;
 }
