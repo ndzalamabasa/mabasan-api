@@ -21,7 +21,7 @@ public class VisitorController {
     // this.visitorService = visitorService;
     // }
 
-    @GetMapping("/")
+    @GetMapping
     @ResponseBody
     String home() {
         return "App";
