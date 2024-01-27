@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
-import java.util.Objects;
 
 @Repository
 public class VisitorRepoImplementation implements VisitorRepository {
