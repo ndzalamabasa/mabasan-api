@@ -9,10 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class MessageServiceImplementation implements MessageService {
     @Autowired
-    VisitorRepository visitorRepository;
+    MessageRepo messageRepo;
 
     @Override
     public Message saveMessage(String message) throws EtAuthException {
-        return null;
+        return messageRepo.saveMessage(message);
     }
 }
