@@ -1,10 +1,11 @@
 package com.heroku.java;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
-import java.util.UUID;
+import com.heroku.java.exceptions.EtAuthException;
 
-@Repository
-public interface VisitorRepository extends CrudRepository<Visitor, UUID> {
+public interface VisitorRepository {
+
+    Integer addVisitor(String visitorName, String visitorEmail) throws EtAuthException;
+
+    Visitor getVisitorById(Integer visitorId);
 }
