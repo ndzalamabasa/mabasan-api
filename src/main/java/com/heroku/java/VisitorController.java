@@ -34,7 +34,7 @@ public class VisitorController {
         String visitorName = (String) body.get("visitorName");
         String visitorEmail = (String) body.get("visitorEmail");
 
-//        Visitor visitor = visitorService.addVisitor(visitorName, visitorEmail);
+        Visitor visitor = visitorService.addVisitor(visitorName, visitorEmail);
         Map<String, String> map = new HashMap<>();
         map.put("message", "visitor added successfully");
 
