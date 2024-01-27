@@ -17,6 +17,9 @@ public class VisitorServiceImplementation implements VisitorService {
     @Override
     public Visitor addVisitor(String visitorName, String visitorEmail) throws EtAuthException {
         Integer visitorId = visitorRepository.addVisitor(visitorName, visitorEmail);
+        if(visitorName == null || visitorEmail == null){
+            throw new EtAuthException("required fields(*) missing.");
+        }
         return visitorRepository.getVisitorById(visitorId);
     }
 }

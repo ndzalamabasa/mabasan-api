@@ -35,10 +35,6 @@ public class VisitorController {
     public ResponseEntity<Map<String, String>> saveVisitor(@RequestBody Map<String, Object> body) {
         String visitorName = (String) body.get("visitorName");
         String visitorEmail = (String) body.get("visitorEmail");
-        
-        if(visitorName == null || visitorEmail == null){
-            throw new EtAuthException("required fields(*) missing.");
-        }
 
         Visitor visitor = visitorService.addVisitor(visitorName, visitorEmail);
         Map<String, String> map = new HashMap<>();
