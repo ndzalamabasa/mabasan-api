@@ -21,7 +21,7 @@ public class MessageController {
     public ResponseEntity<Map<String, String>> saveMessage(@RequestBody Map<String, Object> body) {
         String message = (String) body.get("message");
 
-        Message newMessage = messageService.saveMessage(message);
+        Integer newMessage = messageService.saveMessage(message);
         Map<String, String> map = new HashMap<>();
         map.put("success", "message was sent");
 
