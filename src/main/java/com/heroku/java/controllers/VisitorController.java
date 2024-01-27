@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/app")
+@RequestMapping("/api/messages")
 public class VisitorController {
 
     @Autowired
@@ -31,7 +31,7 @@ public class VisitorController {
         return new ResponseEntity<>("Hello app", HttpStatus.OK);
     }
 
-    @PostMapping("/addVisitor")
+    @PostMapping
     public ResponseEntity<Map<String, String>> saveVisitor(@RequestBody Map<String, Object> body) {
         String visitorName = (String) body.get("visitorName");
         String visitorEmail = (String) body.get("visitorEmail");
