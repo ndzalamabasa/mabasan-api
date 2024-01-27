@@ -12,7 +12,7 @@ public class MessageServiceImplementation implements MessageService {
     VisitorRepository visitorRepository;
 
     @Override
-    public Visitor saveMessage(String message) throws EtAuthException {
+    public Message saveMessage(String message) throws EtAuthException {
         return null;
     }
 }
