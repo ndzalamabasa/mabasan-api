@@ -16,7 +16,7 @@ public class MessageServiceImplementation implements MessageService {
 
     @Override
     public Integer saveMessage(Integer visitorId, String message) throws ValidateDataException {
-        if(Objects.equals(message.trim(), "")){
+        if(Objects.equals(message, "")){
             throw new ValidateDataException("missing required fields");
         }
 
