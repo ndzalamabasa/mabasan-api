@@ -16,7 +16,7 @@ public class MessageServiceImplementation implements MessageService {
     MessageRepo messageRepo;
 
     @Override
-    public Integer saveMessage(Integer visitorId, String message) throws EtAuthException {
+    public Integer saveMessage(Integer visitorId, String message) throws ValidateDataException {
         if(Objects.equals(message.trim(), "")){
             throw new ValidateDataException("missing required fields");
         }
