@@ -42,11 +42,7 @@ public class VisitorRepoImplementation implements VisitorRepository {
 
     @Override
     public Visitor getVisitorById(Integer visitorId) {
-        try {
-            return jdbcTemplate.queryForObject(GET_VISITOR_BY_ID, visitorRowMapper, visitorId);
-        } catch(Exception e){
-            throw new EtAuthException("visitor exists");
-        }
+        return jdbcTemplate.queryForObject(GET_VISITOR_BY_ID, visitorRowMapper, visitorId);
     }
 
     @Override
