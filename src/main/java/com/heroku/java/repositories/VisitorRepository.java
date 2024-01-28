@@ -9,4 +9,6 @@ public interface VisitorRepository {
     Integer addVisitor(String visitorName, String visitorEmail) throws EtAuthException;
 
     Visitor getVisitorById(Integer visitorId);
+
+    Integer visitorEmailCount(String visitorEmail);
 }
