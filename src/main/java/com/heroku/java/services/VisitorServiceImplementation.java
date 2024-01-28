@@ -29,14 +29,14 @@ public class VisitorServiceImplementation implements VisitorService {
             throw new ValidateDataException("invalid email");
         }
 
-        visitorEmail = visitorEmail.toLowerCase().trim();
+        visitorEmail = visitorEmail.trim().toLowerCase();
 
         Integer visitorEmailCount = visitorRepository.visitorEmailCount(visitorEmail);
         if(visitorEmailCount > 0) {
             return visitorRepository.getVisitorByEmail(visitorEmail);
         }
 
-        Integer visitorId = visitorRepository.addVisitor(visitorName.trim().toLowerCase(), visitorEmail);
+        Integer visitorId = visitorRepository.addVisitor(visitorName.trim(), visitorEmail);
 
         return visitorRepository.getVisitorById(visitorId);
     }
