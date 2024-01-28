@@ -43,7 +43,7 @@ public class VisitorController {
         String message = (String) body.get("message");
 
         Visitor visitor = visitorService.addVisitor(visitorName, visitorEmail);
-        Integer newMessage = messageService.saveMessage(28, message);
+        Integer newMessage = messageService.saveMessage(visitor.getVisitorId(), message);
         Map<String, String> map = new HashMap<>();
         map.put("success", "message sent successfully");
 
