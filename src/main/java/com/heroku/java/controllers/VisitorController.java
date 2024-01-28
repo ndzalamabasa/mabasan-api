@@ -42,8 +42,8 @@ public class VisitorController {
         String visitorEmail = (String) body.get("visitorEmail");
         String message = (String) body.get("message");
 
-        Visitor visitor = visitorService.addVisitor(visitorName, visitorEmail);
-        Integer newMessage = messageService.saveMessage(visitor.getVisitorId(), message);
+//        Visitor visitor = visitorService.addVisitor(visitorName, visitorEmail);
+        Integer newMessage = messageService.saveMessage(4, message);
         Map<String, String> map = new HashMap<>();
         map.put("success", "message sent successfully");
 
