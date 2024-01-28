@@ -47,7 +47,7 @@ public class VisitorRepoImplementation implements VisitorRepository {
 
     @Override
     public Integer visitorEmailCount(String visitorEmail) {
-        return jdbcTemplate.queryForObject(GET_VISITOR_COUNT, Integer.class);
+        return jdbcTemplate.queryForObject(GET_VISITOR_COUNT, (rs, rowNum) -> rs.getInt(1), visitorEmail);
     }
 
     private final RowMapper<Visitor> visitorRowMapper = ((rs, rowNum) ->{
