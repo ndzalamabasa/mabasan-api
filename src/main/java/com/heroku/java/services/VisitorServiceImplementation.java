@@ -19,7 +19,7 @@ public class VisitorServiceImplementation implements VisitorService {
         Integer visitorEmailCount = visitorRepository.visitorEmailCount(visitorEmail);
 
         if(visitorEmailCount > 0) {
-            throw new EtAuthException("visitor exists");
+            return visitorRepository.getVisitorByEmail(visitorEmail);
         }
 
         Integer visitorId = visitorRepository.addVisitor(visitorName, visitorEmail);
