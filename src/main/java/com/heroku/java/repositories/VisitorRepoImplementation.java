@@ -1,7 +1,7 @@
 package com.heroku.java.repositories;
 
 import com.heroku.java.entities.Visitor;
-import com.heroku.java.exceptions.EtAuthException;
+import com.heroku.java.exceptions.ValidateDataException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -23,7 +23,7 @@ public class VisitorRepoImplementation implements VisitorRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
     @Override
-    public Integer addVisitor(String visitorName, String visitorEmail) throws EtAuthException {
+    public Integer addVisitor(String visitorName, String visitorEmail) throws ValidateDataException {
         try{
             KeyHolder keyHolder = new GeneratedKeyHolder();
 
@@ -37,7 +37,7 @@ public class VisitorRepoImplementation implements VisitorRepository {
 
             return (Integer) keyHolder.getKeys().get("visitor_id");
         } catch(Exception e){
-            throw new EtAuthException("Invalid details, failed to add a visitor");
+            throw new ValidateDataException("Invalid details");
         }
     }
 

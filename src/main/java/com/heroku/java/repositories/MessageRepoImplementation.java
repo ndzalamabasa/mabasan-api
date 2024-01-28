@@ -1,7 +1,7 @@
 package com.heroku.java.repositories;
 
 import com.heroku.java.exceptions.EtAuthException;
-import com.heroku.java.repositories.MessageRepo;
+import com.heroku.java.exceptions.ValidateDataException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -18,7 +18,7 @@ public class MessageRepoImplementation implements MessageRepo {
     @Autowired
     JdbcTemplate jdbcTemplate;
     @Override
-    public Integer saveMessage(Integer visitorId, String message) throws EtAuthException {
+    public Integer saveMessage(Integer visitorId, String message) throws ValidateDataException {
         try{
             KeyHolder keyHolder = new GeneratedKeyHolder();
 
@@ -32,7 +32,7 @@ public class MessageRepoImplementation implements MessageRepo {
 
             return (Integer) keyHolder.getKeys().get("message_id");
         } catch(Exception e){
-            throw new EtAuthException("message not sent, try again.");
+            throw new ValidateDataException("message not sent, try again.");
         }
     }
 }
