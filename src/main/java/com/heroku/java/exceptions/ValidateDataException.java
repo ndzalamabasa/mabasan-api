@@ -1,8 +1,8 @@
 package com.heroku.java.exceptions;
 
-public class MissingNameException extends RuntimeException{
+public class ValidateDataException extends RuntimeException{
 
-    public MissingNameException(String message) {
+    public ValidateDataException(String message) {
         super(message);
     }
 }

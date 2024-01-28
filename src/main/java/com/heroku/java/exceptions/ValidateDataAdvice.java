@@ -11,12 +11,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-public class MissingNameAdvice {
+public class ValidateDataAdvice {
     Map<Object, Object> errorObject = new HashMap<>();
 
     @ResponseBody
-    @ExceptionHandler(MissingNameException.class)
-    ResponseEntity<?> missingNameHandler(MissingNameException ex) {
+    @ExceptionHandler(ValidateDataException.class)
+    ResponseEntity<?> missingNameHandler(ValidateDataException ex) {
         errorObject.put("message",ex.getMessage());
         return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
                 .contentType(MediaType.APPLICATION_JSON)
