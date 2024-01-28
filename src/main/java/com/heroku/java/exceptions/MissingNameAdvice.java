@@ -17,7 +17,7 @@ public class MissingNameAdvice {
     @ResponseBody
     @ExceptionHandler(MissingNameException.class)
     ResponseEntity<?> missingNameHandler(MissingNameException ex) {
-        errorObject.put("Error",ex.getMessage());
+        errorObject.put("message",ex.getMessage());
         return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(errorObject);

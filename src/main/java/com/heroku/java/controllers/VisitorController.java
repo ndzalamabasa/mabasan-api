@@ -40,7 +40,7 @@ public class VisitorController {
         Visitor visitor = visitorService.addVisitor(visitorName, visitorEmail);
         Integer newMessage = messageService.saveMessage(visitor.getVisitorId(), message);
         Map<String, String> map = new HashMap<>();
-        map.put("success", "message sent successfully");
+        map.put("message", "message sent");
 
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
