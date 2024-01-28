@@ -20,12 +20,12 @@ public class MessageController {
     MessageService messageService;
     @PostMapping
     public ResponseEntity<Map<String, String>> saveMessage(@RequestBody Map<String, Object> body) {
-        String message = (String) body.get("message");
-
-        Integer newMessage = messageService.saveMessage(message);
+//        String message = (String) body.get("message");
+//
+//        Integer newMessage = messageService.saveMessage(message);
         Map<String, String> map = new HashMap<>();
         map.put("success", "message was sent");
-
+//
         return new ResponseEntity<>(map, HttpStatus.OK);
     }
 }

@@ -13,18 +13,19 @@ import java.sql.Statement;
 
 @Repository
 public class MessageRepoImplementation implements MessageRepo {
-    private static final String INSERT_MESSAGE = "INSERT INTO messages(message) VALUES (?)";
+    private static final String INSERT_MESSAGE = "INSERT INTO messages(visitor_id, message) VALUES (?, ?)";
 
     @Autowired
     JdbcTemplate jdbcTemplate;
     @Override
-    public Integer saveMessage(String message) throws EtAuthException {
+    public Integer saveMessage(Integer visitorId, String message) throws EtAuthException {
         try{
             KeyHolder keyHolder = new GeneratedKeyHolder();
 
             jdbcTemplate.update(con -> {
                 PreparedStatement ps = con.prepareStatement(INSERT_MESSAGE, Statement.RETURN_GENERATED_KEYS);
-                ps.setString(1, message);
+                ps.setInt(1, visitorId);
+                ps.setString(2, message);
 
                 return ps;
             }, keyHolder);

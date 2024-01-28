@@ -13,7 +13,7 @@ public class MessageServiceImplementation implements MessageService {
     MessageRepo messageRepo;
 
     @Override
-    public Integer saveMessage(String message) throws EtAuthException {
-        return messageRepo.saveMessage(message);
+    public Integer saveMessage(Integer visitorId, String message) throws EtAuthException {
+        return null;
     }
 }
