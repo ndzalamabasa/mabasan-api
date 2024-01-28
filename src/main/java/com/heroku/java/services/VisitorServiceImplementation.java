@@ -20,7 +20,7 @@ public class VisitorServiceImplementation implements VisitorService {
     public Visitor addVisitor(String visitorName, String visitorEmail) throws ValidateDataException {
         Integer visitorEmailCount = visitorRepository.visitorEmailCount(visitorEmail);
 
-        if(Objects.equals(visitorName, "")){
+        if(Objects.equals(visitorName.trim(), "") || Objects.equals(visitorEmail.trim(), "")){
             throw new ValidateDataException("missing required fields");
         }
 
