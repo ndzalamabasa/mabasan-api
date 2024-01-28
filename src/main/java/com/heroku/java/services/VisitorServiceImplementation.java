@@ -1,9 +1,8 @@
 package com.heroku.java.services;
 
-import com.heroku.java.exceptions.MissingNameException;
+import com.heroku.java.exceptions.ValidateDataException;
 import com.heroku.java.repositories.VisitorRepository;
 import com.heroku.java.entities.Visitor;
-import com.heroku.java.exceptions.EtAuthException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,11 +17,11 @@ public class VisitorServiceImplementation implements VisitorService {
     VisitorRepository visitorRepository;
 
     @Override
-    public Visitor addVisitor(String visitorName, String visitorEmail) throws MissingNameException {
+    public Visitor addVisitor(String visitorName, String visitorEmail) throws ValidateDataException {
         Integer visitorEmailCount = visitorRepository.visitorEmailCount(visitorEmail);
 
         if(Objects.equals(visitorName, "")){
-            throw new MissingNameException("Some of the required fields are missing");
+            throw new ValidateDataException("Some of the required fields are missing");
         }
 
         if(visitorEmailCount > 0) {
