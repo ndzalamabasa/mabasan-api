@@ -17,7 +17,7 @@ public class MabasanApi {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/v1/messages").allowedOrigins("*");
+                registry.addMapping("/api/v1/messages").allowedOrigins("https://mabasan.co.za");
             }
         };
     }
