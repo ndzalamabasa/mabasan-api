@@ -36,7 +36,7 @@ public class VisitorServiceImplementation implements VisitorService {
             return visitorRepository.getVisitorByEmail(visitorEmail);
         }
 
-        Integer visitorId = visitorRepository.addVisitor(visitorName.trim(), visitorEmail);
+        Integer visitorId = visitorRepository.addVisitor(visitorName.trim().toLowerCase(), visitorEmail);
 
         return visitorRepository.getVisitorById(visitorId);
     }
