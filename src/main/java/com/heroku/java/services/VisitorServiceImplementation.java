@@ -19,7 +19,7 @@ public class VisitorServiceImplementation implements VisitorService {
 
     @Override
     public Visitor addVisitor(String visitorName, String visitorEmail) throws ValidateDataException {
-        if(Objects.equals(visitorName, "") || Objects.equals(visitorEmail, "")){
+        if(Objects.equals(visitorName, null) || Objects.equals(visitorName, "") || Objects.equals(visitorEmail, null) || Objects.equals(visitorEmail, "")){
             throw new ValidateDataException("missing required fields");
         }
 
