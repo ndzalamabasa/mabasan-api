@@ -19,8 +19,6 @@ public class VisitorServiceImplementation implements VisitorService {
 
     @Override
     public Visitor addVisitor(String visitorName, String visitorEmail) throws ValidateDataException {
-        Integer visitorEmailCount = visitorRepository.visitorEmailCount(visitorEmail);
-
         if(Objects.equals(visitorName, "") || Objects.equals(visitorEmail, "")){
             throw new ValidateDataException("missing required fields");
         }
@@ -33,6 +31,7 @@ public class VisitorServiceImplementation implements VisitorService {
 
         visitorEmail = visitorEmail.toLowerCase();
 
+        Integer visitorEmailCount = visitorRepository.visitorEmailCount(visitorEmail);
         if(visitorEmailCount > 0) {
             return visitorRepository.getVisitorByEmail(visitorEmail);
         }
