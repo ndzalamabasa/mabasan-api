@@ -5,5 +5,5 @@ import com.heroku.java.exceptions.EtAuthException;
 
 public interface VisitorService {
 
-    Visitor addVisitor(String visitorName, String visitorEmail) throws EtAuthException;
+    Visitor addVisitor(String visitorName, String visitorEmail);
 }

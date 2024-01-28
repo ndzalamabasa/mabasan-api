@@ -10,5 +10,6 @@ public interface VisitorRepository {
 
     Visitor getVisitorById(Integer visitorId);
 
-    Integer visitorEmailCount(String visitorEmail);
+    Visitor getVisitorByEmail(String visitorEmail);
+
 }

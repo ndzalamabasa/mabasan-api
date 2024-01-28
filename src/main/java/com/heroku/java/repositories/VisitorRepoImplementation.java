@@ -17,7 +17,7 @@ public class VisitorRepoImplementation implements VisitorRepository {
 
     private static final String INSERT_VISITOR = "INSERT INTO visitors(visitor_name, visitor_email) VALUES ( ?, ?)";
     private static final String GET_VISITOR_BY_ID = "SELECT * FROM visitors WHERE visitor_id = ?";
-    private static final String GET_VISITOR_COUNT = "SELECT COUNT(*) FROM visitors WHERE visitor_email = ?";
+    private static final String GET_VISITOR_BY_EMAIL = "SELECT * FROM visitors WHERE visitor_email = ?";
 
     @Autowired
     JdbcTemplate jdbcTemplate;
@@ -46,8 +46,8 @@ public class VisitorRepoImplementation implements VisitorRepository {
     }
 
     @Override
-    public Integer visitorEmailCount(String visitorEmail) {
-        return jdbcTemplate.queryForObject(GET_VISITOR_COUNT, (rs, rowNum) -> rs.getInt(1), visitorEmail);
+    public Visitor getVisitorByEmail(String visitorEmail) {
+        return jdbcTemplate.queryForObject(GET_VISITOR_BY_EMAIL, visitorRowMapper, visitorEmail);
     }
 
     private final RowMapper<Visitor> visitorRowMapper = ((rs, rowNum) ->{

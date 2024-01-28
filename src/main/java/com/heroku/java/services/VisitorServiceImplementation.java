@@ -16,9 +16,9 @@ public class VisitorServiceImplementation implements VisitorService {
 
     @Override
     public Visitor addVisitor(String visitorName, String visitorEmail) throws EtAuthException {
-        Integer visitorEmailCount = visitorRepository.visitorEmailCount(visitorEmail);
+        Visitor visitorWithSameEmail = visitorRepository.getVisitorByEmail(visitorEmail);
 
-        if(visitorEmailCount > 0) {
+        if(visitorWithSameEmail != null) {
             throw new EtAuthException("visitor exists");
         }
 
