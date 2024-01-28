@@ -20,6 +20,6 @@ public class MessageServiceImplementation implements MessageService {
             throw new ValidateDataException("missing required fields");
         }
 
-        return messageRepo.saveMessage(visitorId, message.trim());
+        return messageRepo.saveMessage(visitorId, message.trim().toLowerCase());
     }
 }
