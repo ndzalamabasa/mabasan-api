@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 @Service
 @Transactional
@@ -23,6 +24,14 @@ public class VisitorServiceImplementation implements VisitorService {
         if(Objects.equals(visitorName.trim(), "") || Objects.equals(visitorEmail.trim(), "")){
             throw new ValidateDataException("missing required fields");
         }
+
+        Pattern validEmailPattern = Pattern.compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$\n");
+
+        if(!validEmailPattern.matcher(visitorEmail).matches()){
+            throw new ValidateDataException("invalid email");
+        }
+
+        visitorEmail = visitorEmail.toLowerCase();
 
         if(visitorEmailCount > 0) {
             return visitorRepository.getVisitorByEmail(visitorEmail);
