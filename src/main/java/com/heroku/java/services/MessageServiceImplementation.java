@@ -14,6 +14,6 @@ public class MessageServiceImplementation implements MessageService {
 
     @Override
     public Integer saveMessage(Integer visitorId, String message) throws EtAuthException {
-        return null;
+        return messageRepo.saveMessage(visitorId, message);
     }
 }
