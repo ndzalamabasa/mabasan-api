@@ -21,7 +21,7 @@ public class VisitorServiceImplementation implements VisitorService {
         Integer visitorEmailCount = visitorRepository.visitorEmailCount(visitorEmail);
 
         if(Objects.equals(visitorName, "")){
-            throw new ValidateDataException("Some of the required fields are missing");
+            throw new ValidateDataException("missing required fields");
         }
 
         if(visitorEmailCount > 0) {
