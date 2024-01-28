@@ -25,7 +25,7 @@ public class VisitorServiceImplementation implements VisitorService {
             throw new ValidateDataException("missing required fields");
         }
 
-        Pattern validEmailPattern = Pattern.compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$\n");
+        Pattern validEmailPattern = Pattern.compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
 
         if(!validEmailPattern.matcher(visitorEmail).matches()){
             throw new ValidateDataException("invalid email");
