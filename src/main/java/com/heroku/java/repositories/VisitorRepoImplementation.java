@@ -46,6 +46,11 @@ public class VisitorRepoImplementation implements VisitorRepository {
     }
 
     @Override
+    public Visitor getVisitorByEmail(String visitorEmail) {
+        return jdbcTemplate.queryForObject(GET_VISITOR_BY_ID, visitorRowMapper, visitorEmail);
+    }
+
+    @Override
     public Integer visitorEmailCount(String visitorEmail) {
         return jdbcTemplate.queryForObject(GET_VISITOR_COUNT, (rs, rowNum) -> rs.getInt(1), visitorEmail);
     }
