@@ -6,18 +6,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @ControllerAdvice
 public class MissingNameAdvice {
+    Map<String, String> errorObject = new HashMap<>();
 
     @ResponseBody
     @ExceptionHandler(MissingNameException.class)
-  
     ResponseEntity<?> missingNameHandler(MissingNameException ex) {
+        errorObject.put("Error",ex.getMessage( ));
         return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(ex.getMessage());
+                .body(errorObject);
     }
 
 }
